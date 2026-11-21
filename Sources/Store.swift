@@ -264,12 +264,14 @@ final class AppModel: ObservableObject {
         modelsVersion += 1
         if let error { downloadError = error; return }
         if id == ModelFile.speech.id { onSpeechModelReady() }
+        defer { onModelDownloaded() }
         // A newly downloaded tier becomes the default unless the user chose one themselves.
         if let t = Tier.byID(id), !Settings.userPickedTier, t.accuracy > currentTier.accuracy {
             autoPicking = true; formatTier = t.id; autoPicking = false
         }
     }
     var onSpeechModelReady: () -> Void = {}
+    var onModelDownloaded: () -> Void = {}
 
     /// First run: fetch the speech model and the best formatting tier for this Mac.
     func downloadEssentials() {

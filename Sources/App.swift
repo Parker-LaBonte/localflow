@@ -40,6 +40,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate, NSWind
         Downloader.shared.onProgress = { [weak self] id, p in self?.model.downloadProgress(id, p) }
         Downloader.shared.onFinished = { [weak self] id, err in self?.model.downloadFinished(id, error: err) }
         model.onSpeechModelReady = { [weak self] in self?.refreshEngineStatus(); self?.applyKeepLoaded() }
+        model.onModelDownloaded = { [weak self] in self?.primeEnginesIfNeeded() }
         refreshEngineStatus()
         recorder.onLevel = { [weak self] l in DispatchQueue.main.async { self?.hud.model.push(l) } }
 
