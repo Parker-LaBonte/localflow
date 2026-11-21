@@ -1,0 +1,21 @@
+model: base/Qwen2.5-3B-Instruct
+train: true
+data: data5
+fine_tune_type: lora
+num_layers: 36
+batch_size: 4
+iters: 1000
+learning_rate: 5.0e-5
+lr_schedule:
+  name: cosine_decay
+  warmup: 60
+  warmup_init: 1.0e-6
+  arguments: [5.0e-5, 1000, 2.0e-6]
+lora_parameters: {rank: 16, dropout: 0.05, scale: 20.0}
+mask_prompt: true
+max_seq_length: 512
+steps_per_report: 50
+steps_per_eval: 250
+save_every: 250
+adapter_path: ad_L5
+seed: 5

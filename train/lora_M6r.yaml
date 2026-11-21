@@ -1,0 +1,21 @@
+model: base/Qwen2.5-1.5B-Instruct
+train: true
+data: data6
+fine_tune_type: lora
+num_layers: 16
+batch_size: 8
+iters: 350
+learning_rate: 4.0e-5
+lr_schedule:
+  name: cosine_decay
+  warmup: 10
+  warmup_init: 1.0e-5
+  arguments: [2.2e-5, 350, 2.0e-6]
+mask_prompt: true
+max_seq_length: 512
+steps_per_report: 50
+steps_per_eval: 350
+save_every: 350
+adapter_path: ad_M6r
+seed: 6
+resume_adapter_file: ad_M6/0000350_adapters.safetensors

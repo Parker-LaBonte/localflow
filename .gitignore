@@ -1,0 +1,38 @@
+# Build output and local config
+dist/
+.build.local
+.DS_Store
+__pycache__/
+*.log
+
+# Not part of the public repo
+audio-eval/
+eval/
+models/
+brew.log
+server.log
+
+# train/: only scripts, configs, test sets and docs are tracked.
+# Data, base models, adapters, checkpoints and results are generated locally.
+train/*
+!train/README.md
+!train/make_data.py
+!train/make_data5.py
+!train/make_data6.py
+!train/make_data7.py
+!train/test_set3.py
+!train/test_set4.py
+!train/eval3.py
+!train/eval_xs_app.py
+!train/tagger.py
+!train/export_xs6.py
+!train/prune_vocab.py
+!train/package_tier.sh
+!train/template.txt
+!train/soup.py
+!train/train_S.sh
+!train/lora_L5.yaml
+!train/lora_L6.yaml
+!train/lora_L7.yaml
+!train/lora_M6.yaml
+!train/lora_M6r.yaml
